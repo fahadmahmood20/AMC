@@ -1,0 +1,45 @@
+﻿/// <summary>
+        /// Initialises a new instance of the <see cref="ApplicationSettingsConfigElement"/> class.
+        /// </summary>
+        /// <param name="defApplicationSettings">The definition application settings.</param>
+        public ApplicationSettingsConfigElement(IApplicationSettings defApplicationSettings)
+        {
+            if (defApplicationSettings != null)
+            {
+                //// We need to break the references so that they arent shared amongst setting values. Unfoutunatelly this is the way DynamicMap works.
+                //// Option 1: Serialize and deserialize. Cant due to .NET configuration clases not being serializable. Custom implementation is required and will take time to implement and maintain.
+                //// Option 2: Use automapper to create a new object and then copy to this object.
+                //// We need to  create new mapper instance beacuse of automapper Cache Issue.
+                var mapper = ObjectMapperFactory.CreateMapper<ApplicationSettingsConfigElement, ApplicationSettingsConfigElement>();
+                mapper.Map(defApplicationSettings, this);
+                
+            }
+        }
+
+        public ApplicationSettingsConfigElement Map(IApplicationSettings defApplicationSettings)
+        {
+            var config = new MapperConfiguration(
+                                cfg => {
+                                    cfg.CreateMap<ApplicationSettingsConfigElement, ApplicationSettingsConfigElement>();
+                                    cfg.CreateMap<UpsellOptionsCollection, UpsellOptionsCollection>();
+                                    cfg.CreateMap<UpsellOptionsConfigElement, UpsellOptionsConfigElement>();                                    
+                                });
+            config.AssertConfigurationIsValid();
+            var mapper = new Mapper(config);
+
+            return mapper.Map<IApplicationSettings, ApplicationSettingsConfigElement>(defApplicationSettings);
+        }
+
+        public static ApplicationSettingsConfigElement Map1(IApplicationSettings defApplicationSettings)
+        {
+            var config = new MapperConfiguration(
+                                cfg => {
+                                    cfg.CreateMap<ApplicationSettingsConfigElement, ApplicationSettingsConfigElement>();
+                                    cfg.CreateMap<UpsellOptionsCollection, UpsellOptionsCollection>();
+                                    cfg.CreateMap<UpsellOptionsConfigElement, UpsellOptionsConfigElement>();
+                                });
+            config.AssertConfigurationIsValid();
+            var mapper = new Mapper(config);
+
+            return mapper.Map<IApplicationSettings, ApplicationSettingsConfigElement>(defApplicationSettings);
+        }
