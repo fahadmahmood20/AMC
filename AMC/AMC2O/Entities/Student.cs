@@ -13,5 +13,6 @@ namespace AMC2O.Entities
         public string Address { get; set; }
         public string Phone { get; set; }
         public int SchoolId { get; set; }
+        public School school { get; set; }
     }
 }

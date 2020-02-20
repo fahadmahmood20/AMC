@@ -14,7 +14,7 @@ namespace AMC2O.Infrastructure.AutomapperConfiguration.Profiles
         public StudentProfile()
         {
             CreateMap<Student, StudentVM>()
-                .ForMember(dest => dest.schools, src => src.Ignore())
+                .ForMember(dest => dest.school, src => src.Ignore())
                 .AfterMap((src, dst) =>
                 {
                 });

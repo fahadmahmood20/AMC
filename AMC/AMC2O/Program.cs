@@ -22,9 +22,8 @@ namespace AMC2O
                 var mapper = Configuration.InitializeAutoMapper();
                 ////IMapper mapper = new Mapper(config);
 
-                var dest = mapper.Map<Student, StudentVM>(StudentService.GetStudents());
-
-
+                var dest = mapper.Map<Student, StudentVM>(StudentService.GetStudent());
+                
                 var source = mapper.Map<StudentVM, Student>(dest);
 
 
