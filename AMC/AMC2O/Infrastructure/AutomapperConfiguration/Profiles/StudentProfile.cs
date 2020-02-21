@@ -1,5 +1,6 @@
 ﻿using AMC2O.Entities;
 using AMC2O.Entities.VM;
+using AMC2O.Infrastructure.AutomapperConfiguration.MapActions;
 using AutoMapper;
 using System;
 using System.Collections.Generic;

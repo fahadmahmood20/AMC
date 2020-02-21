@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMC.MapConfiguration", "AMC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMC2O", "AMC2O\AMC2O.csproj", "{2DAF4EA9-2EA4-4097-B884-B5980D5AD672}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateLearning", "DelegateLearning\DelegateLearning.csproj", "{7208F31B-176E-416C-A7E9-8FBCFE7F8903}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2DAF4EA9-2EA4-4097-B884-B5980D5AD672}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DAF4EA9-2EA4-4097-B884-B5980D5AD672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DAF4EA9-2EA4-4097-B884-B5980D5AD672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7208F31B-176E-416C-A7E9-8FBCFE7F8903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7208F31B-176E-416C-A7E9-8FBCFE7F8903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7208F31B-176E-416C-A7E9-8FBCFE7F8903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7208F31B-176E-416C-A7E9-8FBCFE7F8903}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
