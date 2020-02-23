@@ -16,38 +16,52 @@ namespace AMC2O
 {
     class Program
     {
-        public delegate void Tester(Object src, Object dst, ResolutionContext resolutionContext);
+        ////public delegate void Tester(Object src, Object dst, ResolutionContext resolutionContext);
         static void Main(string[] args)
         {
-			try
-			{
-                
+            try
+            {
+
                 var mapper = Configuration.InitializeAutoMapper();
                 ////IMapper mapper = new Mapper(config);
 
                 foreach (var item in mapper.ConfigurationProvider.GetAllTypeMaps())
                 {
                     ////var t = Action<object, object, ResolutionContext>;
-                    Expression<Tester> beforeMapAction = (src, dst, context) => Test(src, dst, context);
-                    beforeMapAction.Compile();
+                    Expression<Action<object, object, ResolutionContext>> beforeMapAction = (src, dst, context) => Test(src, dst, context);
+                    ////Expression<Action<int>> beforeMapAction = (x) => Console.WriteLine("Test");
+                    ////beforeMapAction.Compile().Invoke(10);
                     item.AddAfterMapAction(beforeMapAction);
+                    ////item.AfterMapActions<NameMeJohnActionInterface>();
+                }
+
+                foreach (var item in mapper.ConfigurationProvider.GetAllTypeMaps())
+                {
                 }
 
                 var dest = mapper.Map<Student, StudentVM>(StudentService.GetStudent());
-                
+
 
                 var source = mapper.Map<StudentVM, Student>(dest);
 
-
+                Console.ReadLine();
                 ////var test = new BaseService().GetMappingStudent();
             }
-			catch (Exception ex)
-			{
-			}
+            catch (Exception ex)
+            {
+            }
         }
-        public static void Test(Object src, Object dst, ResolutionContext resolutionContext)
+        ////public static void Test(int x)
+        ////{
+        ////    Console.WriteLine("X = {0}", x);
+        ////}
+        public static void Test(Object src, Object dst, ResolutionContext context)
         {
-
+            // do not map properties for refrence entities - otherwise nhibernate will try to update parent object and will give error
+            foreach (var propertyMap in context.ConfigurationProvider.GetAllTypeMaps().SelectMany(c => c.PropertyMaps))
+            {
+                propertyMap.Ignored = true;
+            }
         }
     }
 

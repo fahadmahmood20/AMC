@@ -16,6 +16,7 @@ namespace AMC2O.Infrastructure.AutomapperConfiguration.Profiles
         {
             CreateMap<Student, StudentVM>()
                 .ForMember(dest => dest.school, src => src.Ignore())
+                .AfterMap<NameMeJohnActionInterface>()
                 .AfterMap((src, dst) =>
                 {
                 });

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMC2O", "AMC2O\AMC2O.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateLearning", "DelegateLearning\DelegateLearning.csproj", "{7208F31B-176E-416C-A7E9-8FBCFE7F8903}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpresisonLearning", "ExpresisonLearning\ExpresisonLearning.csproj", "{F091A293-DFA1-45E9-8D08-E65957EE6009}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{7208F31B-176E-416C-A7E9-8FBCFE7F8903}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7208F31B-176E-416C-A7E9-8FBCFE7F8903}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7208F31B-176E-416C-A7E9-8FBCFE7F8903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F091A293-DFA1-45E9-8D08-E65957EE6009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F091A293-DFA1-45E9-8D08-E65957EE6009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F091A293-DFA1-45E9-8D08-E65957EE6009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F091A293-DFA1-45E9-8D08-E65957EE6009}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
