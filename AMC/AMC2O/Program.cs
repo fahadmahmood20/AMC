@@ -31,18 +31,14 @@ namespace AMC2O
                     Expression<Action<object, object, ResolutionContext>> beforeMapAction = (src, dst, context) => Test(src, dst, context);
                     ////Expression<Action<int>> beforeMapAction = (x) => Console.WriteLine("Test");
                     ////beforeMapAction.Compile().Invoke(10);
-                    item.AddAfterMapAction(beforeMapAction);
+                    item.AddBeforeMapAction(beforeMapAction);
                     ////item.AfterMapActions<NameMeJohnActionInterface>();
-                }
-
-                foreach (var item in mapper.ConfigurationProvider.GetAllTypeMaps())
-                {
                 }
 
                 var dest = mapper.Map<Student, StudentVM>(StudentService.GetStudent());
 
 
-                var source = mapper.Map<StudentVM, Student>(dest);
+                ////var source = mapper.Map<StudentVM, Student>(dest);
 
                 Console.ReadLine();
                 ////var test = new BaseService().GetMappingStudent();

@@ -16,17 +16,11 @@ namespace AMC2O.Infrastructure.AutomapperConfiguration.Profiles
         {
             CreateMap<Student, StudentVM>()
                 .ForMember(dest => dest.school, src => src.Ignore())
-                .AfterMap<NameMeJohnActionInterface>()
-                .AfterMap((src, dst) =>
-                {
-                });
+                .BeforeMap<NameMeJohnActionInterface>();
             CreateMap<StudentVM, Student>()
                 .ForMember(dest => dest.Phone, src => src.Ignore())
                 .ForMember(dest => dest.SchoolId, src => src.Ignore())
-                .ForMember(dest => dest.Address, src => src.Ignore())
-                .AfterMap((src, dst) =>
-                {
-                });
+                .ForMember(dest => dest.Address, src => src.Ignore());
         }
     }
 }
