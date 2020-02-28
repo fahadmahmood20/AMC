@@ -15,12 +15,14 @@ namespace AMC2O.Infrastructure.AutomapperConfiguration.Profiles
         public StudentProfile()
         {
             CreateMap<Student, StudentVM>()
-                .ForMember(dest => dest.school, src => src.Ignore())
-                .BeforeMap<NameMeJohnActionInterface>();
-            CreateMap<StudentVM, Student>()
-                .ForMember(dest => dest.Phone, src => src.Ignore())
-                .ForMember(dest => dest.SchoolId, src => src.Ignore())
-                .ForMember(dest => dest.Address, src => src.Ignore());
+                .BeforeMap((s, d, c) => 
+                { 
+                });
+            ////.BeforeMap<NameMeJohnActionInterface>();
+            CreateMap<StudentVM, Student>();
+                ////.ForMember(dest => dest.Phone, src => src.Ignore())
+                ////.ForMember(dest => dest.SchoolId, src => src.Ignore())
+                ////.ForMember(dest => dest.Address, src => src.Ignore());
         }
     }
 }

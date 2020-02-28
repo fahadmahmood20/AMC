@@ -25,17 +25,19 @@ namespace AMC2O
                 var mapper = Configuration.InitializeAutoMapper();
                 ////IMapper mapper = new Mapper(config);
 
-                foreach (var item in mapper.ConfigurationProvider.GetAllTypeMaps())
-                {
-                    ////var t = Action<object, object, ResolutionContext>;
-                    Expression<Action<object, object, ResolutionContext>> beforeMapAction = (src, dst, context) => Test(src, dst, context);
-                    ////Expression<Action<int>> beforeMapAction = (x) => Console.WriteLine("Test");
-                    ////beforeMapAction.Compile().Invoke(10);
-                    item.AddBeforeMapAction(beforeMapAction);
-                    ////item.AfterMapActions<NameMeJohnActionInterface>();
-                }
+                ////foreach (var item in mapper.ConfigurationProvider.GetAllTypeMaps())
+                ////{
+                ////    ////var t = Action<object, object, ResolutionContext>;
+                ////    Expression<Action<object, object, ResolutionContext>> beforeMapAction = (src, dst, context) => Test(src, dst, context);
+                ////    ////Expression<Action<int>> beforeMapAction = (x) => Console.WriteLine("Test");
+                ////    ////beforeMapAction.Compile().Invoke(10);
+                ////    item.AddBeforeMapAction(beforeMapAction);
+                ////    ////item.AfterMapActions<NameMeJohnActionInterface>();
+                ////}
 
-                var dest = mapper.Map<Student, StudentVM>(StudentService.GetStudent());
+                ////
+                Action<IMappingOperationOptions> action = GetMappingOperationOptionsAction();
+                var dest = mapper.Map<Student, StudentVM>(StudentService.GetStudent(), action);
 
 
                 ////var source = mapper.Map<StudentVM, Student>(dest);
@@ -59,6 +61,14 @@ namespace AMC2O
                 propertyMap.Ignored = true;
             }
         }
+
+        private static Action<IMappingOperationOptions> GetMappingOperationOptionsAction()
+        {
+            return new Action<IMappingOperationOptions>((x) =>
+            {
+            });
+        }
+
     }
 
 }

@@ -13,7 +13,10 @@ namespace AMC2O.Infrastructure.AutomapperConfiguration.Profiles
     {
         public SchoolProfile()
         {
-            CreateMap<School, SchoolVM>();
+            CreateMap<School, SchoolVM>()
+                .BeforeMap((s, d, c) =>
+                {
+                });
             CreateMap<SchoolVM, School>();
         }
     }

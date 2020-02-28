@@ -34,7 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AutoMapper\bin\Debug\net461\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,12 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\Room.cs" />
     <Compile Include="Entities\School.cs" />
     <Compile Include="Entities\Student.cs" />
+    <Compile Include="Entities\VM\AddressVM.cs" />
+    <Compile Include="Entities\VM\RoomVM.cs" />
     <Compile Include="Entities\VM\SchoolVM.cs" />
     <Compile Include="Entities\VM\StudentVM.cs" />
     <Compile Include="Infrastructure\AutomapperConfiguration\Configuration.cs" />
     <Compile Include="Infrastructure\AutomapperConfiguration\MapActions\NameMeJohnAction.cs" />
+    <Compile Include="Infrastructure\AutomapperConfiguration\Profiles\RoomProfile.cs" />
+    <Compile Include="Infrastructure\AutomapperConfiguration\Profiles\AddressProfile.cs" />
     <Compile Include="Infrastructure\AutomapperConfiguration\Profiles\SchoolProfile.cs" />
     <Compile Include="Infrastructure\AutomapperConfiguration\Profiles\StudentProfile.cs" />
     <Compile Include="Program.cs" />
@@ -61,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,7 +24,7 @@ namespace AMC2O.Services
         }
         public Student GetStudents()
         {
-            return new Student() { Id = 1, Name = "Fahad Mahmood", Phone = "+9203218899633", Address = "Tricon Tower" };
+            return new Student() { Id = 1, Name = "Fahad Mahmood", Phone = "+9203218899633" };
         }
     }
 }

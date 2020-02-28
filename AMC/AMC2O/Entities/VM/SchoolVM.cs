@@ -10,6 +10,6 @@ namespace AMC2O.Entities.VM
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Address { get; set; }
+        public RoomVM room { get; set; }
     }
 }
