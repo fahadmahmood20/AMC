@@ -14,7 +14,17 @@ namespace AMC2O.Services
         {
             var address = new Address() { Id = 1, Name = "Johar Town", ZipCode = "54000" };
             var roomObj = new Room() { Id = 1, Name = "Class 9" };
-            return new Student() { Id = 1, Name = "Fahad Mahmood", Phone = "+9203218899633", SchoolId = 1, school = new School() { Id = 1, Name = "Boys High School", room = roomObj }, address = address };
+            var student = new Student() { Id = 1, Name = "Fahad Mahmood", Phone = null, SchoolId = 1, school = new School() { Id = 1, Name = "Boys High School", room = roomObj }};
+            student.address.Add(address);
+            return student;
+        }
+        public static Student GetStudent2()
+        {
+            var address = new Address() { Id = 1, Name = "Johar Town", ZipCode = "54000" };
+            var roomObj = new Room() { Id = 1, Name = "Class 9" };
+            var student = new Student() { Id = 1, Name = "Fahad Mahmood", Phone = null, SchoolId = 1, school = new School() { Id = 1, Name = "Boys High School", room = roomObj } };
+            student.address.Add(address);
+            return student;
         }
         public static List<Student> GetStudents()
         {

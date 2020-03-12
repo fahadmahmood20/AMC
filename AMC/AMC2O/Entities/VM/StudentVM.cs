@@ -14,6 +14,6 @@ namespace AMC2O.Entities.VM
         public string Phone { get; set; }
         public int SchoolId { get; set; }
         public SchoolVM school { get; set; }
-        public AddressVM address { get; set; }
+        public IList<AddressVM> address { get; set; }
     }
 }

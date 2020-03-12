@@ -17,7 +17,6 @@ namespace AMC2O.Infrastructure.AutomapperConfiguration.Profiles
                 .BeforeMap((s, d, c) =>
                 {
                 });
-            CreateMap<RoomVM, Room>();
         }
     }
 }

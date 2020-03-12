@@ -1,7 +1,10 @@
-﻿using AMC2O.Infrastructure.AutomapperConfiguration.Profiles;
+﻿using AMC2O.Entities;
+using AMC2O.Entities.VM;
+using AMC2O.Infrastructure.AutomapperConfiguration.Profiles;
 using AutoMapper;
 using AutoMapper.Configuration;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -23,9 +26,48 @@ namespace AMC2O.Infrastructure.AutomapperConfiguration
                 cfg.ForAllMaps((typeMap, mappingExpression) =>
                 {
                     mappingExpression.PreserveReferences();
-                    mappingExpression.MaxDepth(10);
-                    Expression<Action<object, object, ResolutionContext>> beforeMapAction = (src, dest, context) => BeforeMapActionFunc(src, dest, context);
-                    typeMap.AddBeforeMapAction(beforeMapAction);
+                    mappingExpression.ForAllMembers(s => s.MapAtRuntime());
+
+                    if (typeMap.SourceType.Name == "Student")
+                    {
+                        
+
+                        mappingExpression.ConstructUsing((source, context) =>
+                        {
+                            object value = null;
+                            if (source.GetType().Name == "Student")
+                            {
+                                if (typeMap.PropertyMaps != null)
+                                {
+                                    // do not map properties for refrence entities - otherwise nhibernate will try to update parent object and will give error
+                                    foreach (var propertyMap in typeMap.PropertyMaps)
+                                    {
+                                        if (propertyMap.DestinationName == "Phone")
+                                        {
+                                            propertyMap.Ignored = true;
+                                        }
+                                    }
+                                }
+                                value = new StudentVM() { Id = 1, Name = "Fahad Mahmood", Phone = "+9203218899644", SchoolId = 1, school = new SchoolVM() { Id = 1, Name = "Boys High School" } };
+                            }
+                            return value;
+                        });
+                    }
+
+
+                    //mappingExpression.ConvertUsing((src, dst) => 
+                    //{
+                    //    return null;
+                    //});
+                    //mappingExpression.ConvertUsing((src, dst, ctx) => 
+                    //{
+                    //    return null;
+                    //});
+
+                    ////mappingExpression.ConstructUsing((src, context) => 
+                    ////{
+                    ////    return null;
+                    ////});
                 });
                 cfg.AllowNullDestinationValues = true;
                 cfg.AllowNullCollections = true;
@@ -37,30 +79,28 @@ namespace AMC2O.Infrastructure.AutomapperConfiguration
         }
         public static void BeforeMapActionFunc(object source, object destination, ResolutionContext resolutionContext)
         {
-            ////resolutionContext.Items.Add(resolutionContext.InstanceCache.Count.ToString(), resolutionContext);
-            ////var ttttt = resolutionContext
-            AssignPropertyValue(destination, resolutionContext, resolutionContext.InstanceCache);
+
         }
 
-        private static void AssignPropertyValue(object value, ResolutionContext context, Dictionary<ContextCacheKey, object> cache)
-        {
-            var key = new ContextCacheKey(value, value.GetType());
-            if (cache.ContainsKey(key))
-            {
-                var parent = cache[key];
+        ////private static void AssignPropertyValue(object value, ResolutionContext context, Dictionary<ContextCacheKey, object> cache)
+        ////{
+        ////    var key = new ContextCacheKey(value, value.GetType());
+        ////    if (cache.ContainsKey(key))
+        ////    {
+        ////        var parent = cache[key];
 
-                var parentProperty = value.GetType().GetProperty(parent.GetType().Name, parent.GetType());
+        ////        var parentProperty = value.GetType().GetProperty(parent.GetType().Name, parent.GetType());
 
-                if (parentProperty != null && parentProperty.CanWrite)
-                {
-                    parentProperty.SetValue(value, parent, null);
-                }
-            }
+        ////        if (parentProperty != null && parentProperty.CanWrite)
+        ////        {
+        ////            parentProperty.SetValue(value, parent, null);
+        ////        }
+        ////    }
 
-            //if (context != null)
-            //{
-            //    AssignPropertyValue(value, context, cache);
-            //}
-        }
+        ////    //if (context != null)
+        ////    //{
+        ////    //    AssignPropertyValue(value, context, cache);
+        ////    //}
+        ////}
     }
 }

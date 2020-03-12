@@ -23,49 +23,20 @@ namespace AMC2O
             {
 
                 var mapper = Configuration.InitializeAutoMapper();
-                ////IMapper mapper = new Mapper(config);
-
-                ////foreach (var item in mapper.ConfigurationProvider.GetAllTypeMaps())
-                ////{
-                ////    ////var t = Action<object, object, ResolutionContext>;
-                ////    Expression<Action<object, object, ResolutionContext>> beforeMapAction = (src, dst, context) => Test(src, dst, context);
-                ////    ////Expression<Action<int>> beforeMapAction = (x) => Console.WriteLine("Test");
-                ////    ////beforeMapAction.Compile().Invoke(10);
-                ////    item.AddBeforeMapAction(beforeMapAction);
-                ////    ////item.AfterMapActions<NameMeJohnActionInterface>();
-                ////}
-
-                ////
                 Action<IMappingOperationOptions> action = GetMappingOperationOptionsAction();
-                var dest = mapper.Map<Student, StudentVM>(StudentService.GetStudent(), action);
-
-
-                ////var source = mapper.Map<StudentVM, Student>(dest);
-
+                var dest = mapper.Map<StudentVM>(StudentService.GetStudent(), action);
+                var dest2 = mapper.Map<StudentVM>(StudentService.GetStudent2(), action);
                 Console.ReadLine();
-                ////var test = new BaseService().GetMappingStudent();
             }
             catch (Exception ex)
             {
             }
         }
-        ////public static void Test(int x)
-        ////{
-        ////    Console.WriteLine("X = {0}", x);
-        ////}
-        public static void Test(Object src, Object dst, ResolutionContext context)
-        {
-            // do not map properties for refrence entities - otherwise nhibernate will try to update parent object and will give error
-            foreach (var propertyMap in context.ConfigurationProvider.GetAllTypeMaps().SelectMany(c => c.PropertyMaps))
-            {
-                propertyMap.Ignored = true;
-            }
-        }
-
         private static Action<IMappingOperationOptions> GetMappingOperationOptionsAction()
         {
             return new Action<IMappingOperationOptions>((x) =>
             {
+                x.Items.Add("SkipRefrential", true);
             });
         }
 
