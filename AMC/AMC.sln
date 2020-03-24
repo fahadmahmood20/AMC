@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpresisonLearning", "Expre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMapper", "AutoMapper\AutoMapper.csproj", "{44033C56-25C6-4E2B-B6D7-6D8F33F48271}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityContainerLearning", "UnityContainerLearning\UnityContainerLearning.csproj", "{3C31C2F8-189C-4E96-9BE1-5D8AD00AB727}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{44033C56-25C6-4E2B-B6D7-6D8F33F48271}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44033C56-25C6-4E2B-B6D7-6D8F33F48271}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44033C56-25C6-4E2B-B6D7-6D8F33F48271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C31C2F8-189C-4E96-9BE1-5D8AD00AB727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C31C2F8-189C-4E96-9BE1-5D8AD00AB727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C31C2F8-189C-4E96-9BE1-5D8AD00AB727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C31C2F8-189C-4E96-9BE1-5D8AD00AB727}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
